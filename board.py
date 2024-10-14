@@ -1,7 +1,7 @@
 import random
 
 class board:
-    symbols = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    symbols = [" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "]
     '''
     Tamaño dinamico
     3 modos de juego (1v1, 1vCpu, CpuvCpu)
@@ -29,7 +29,7 @@ class board:
     def printBoard(self):
         for i in range(self.row):
             for j in range(self.col):
-                print(self.board[i][j], end=" ")
+                print(' '.join(map(str, self.board[i][j])), end=" ",)
             print()
 
     def printDisplayBoard(self):
