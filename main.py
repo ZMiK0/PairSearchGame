@@ -13,6 +13,7 @@ gm = board.board(row, col)
 
 gm.printBoard()
 
+input("")
+clear()    
 
-
-    
+gm.printDisplayBoard()
