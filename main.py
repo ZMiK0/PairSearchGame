@@ -8,12 +8,15 @@ end = False
 
 row = int(input("Rows: "))
 col = int(input("Columns: "))
-
 gm = board.board(row, col)
-
+clear()
 gm.printBoard()
-
 input("")
-clear()    
 
-gm.printDisplayBoard()
+while not end:
+    
+    clear()    
+
+    gm.printDisplayBoard()
+
+    gm.selectPos()
