@@ -1,5 +1,7 @@
 import board
+import random
 
-b = board.Board(3,3)
+b = board.Board(5,6)
 
-print(b.getRows())
+b.printBoard()
+
