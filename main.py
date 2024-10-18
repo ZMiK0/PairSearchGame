@@ -1,7 +1,7 @@
 import board
-import random
 
-b = board.Board(5,6)
+b = board.Board(4,4)
 
 b.printBoard()
-
+print("-------------------")
+b.printDisplayedBoard()
