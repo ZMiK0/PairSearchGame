@@ -63,4 +63,7 @@ class Player:
         return (pos1,pos2)
 
     def isThisABot(self):
+        '''
+        Returns the humanity of the player.
+        '''
         return self.isBot

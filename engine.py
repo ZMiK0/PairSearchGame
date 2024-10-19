@@ -106,8 +106,8 @@ class Engine:
                     print(f"Player: {_player.getName()}   Score: {_player.getScore()}")
                     self.board.printDisplayedBoard()
                     try:
-                        pos1 = int(input("Row: "))
-                        pos2 = int(input("Column: "))
+                        pos1 = int(input("Row: "))-1
+                        pos2 = int(input("Column: "))-1
                         if ((pos1 >= 0 and pos1 <= len(self.board.getBoard())) and (pos2 >= 0 and pos2 <= len(self.board.getBoard()[0]))) and not self.board.isFlipped((pos1,pos2)):
                             self.board.flipSymbol((pos1,pos2))
                             positions.append((pos1,pos2))
