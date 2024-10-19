@@ -14,15 +14,15 @@ cd PairSearchGame
 mv main.py main
 chmod a+x main
 cd ..
-sudo cp -r PairSearchGame ~/.local/usr/bin/
-sudo ln -s ~/.local/usr/bin/PairSearchGame/main ~/.local/usr/bin/pairSearchGame
+cp -r PairSearchGame ~/.local/usr/bin/
+ln -s ~/.local/usr/bin/PairSearchGame/main ~/.local/usr/bin/pairSearchGame
 rm -r PairSearchGame
 ```
 
 ## Uninstall
 ```shell
-sudo rm ~/.local/usr/bin/quetask
-sudo rm -r ~/.local/usr/bin/PairSearchGame
+rm ~/.local/usr/bin/quetask
+rm -r ~/.local/usr/bin/PairSearchGame
 ```
 
 # Use
