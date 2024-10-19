@@ -10,6 +10,7 @@ class Board:
     symbols (list): List of symbols.
     board (list): Board.
     displayed_board (list): The board the player see.
+    max_points (int): The maximum points a player can get to win.
     '''
 
     def __init__(self, _row, _cols):
@@ -25,6 +26,7 @@ class Board:
         self.symbols = [" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "]
         self.board = []
         self.displayed_board = []
+        self.max_points = ((self.rows*self.columns)/2) + 2 #por ver
 
     def buildBoard(self):
         '''
@@ -106,6 +108,65 @@ class Board:
                 print(' '.join(map(str, self.displayed_board[i][j])), end = "")
             print()
 
+    def flipSymbol(self, _pos):
+        '''
+        Flips a * in the displayed board.
+
+        Parameters:
+        _pos (int): Tuple of the position.
+        '''
+        self.displayed_board[_pos[0]][_pos[1]] = self.board[_pos[0]][_pos[1]]
+    
+    def unflipSymbols(self, _pos1, _pos2):
+        '''
+        Unflips a * in the displayed board.
+
+        Parameters:
+        _pos1 (int): Tuple of the first position.
+        _pos1 (int): Tuple of the second position.
+        '''
+        self.displayed_board[_pos1[0]][_pos1[1]] = "* "
+        self.displayed_board[_pos2[0]][_pos2[1]] = "* "
+    
+    def checkSymbols(self, _pos1, _pos2):
+        '''
+        Checks if the symbols are the same.
+
+        Parameters:
+        _pos1 (int): First position.
+        _pos2 (int): Second position.
+
+        Returns:
+        true: If is correct and is not already flipped.
+        false: If is the same position.
+        false: If is not correct.
+        '''
+        if _pos1 != _pos2:
+            if (self.board[_pos1[0]][_pos1[1]] == self.board[_pos2[0]][_pos2[1]]): # and not (self.isFlipped(_pos1) or self.isFlipped(_pos2)):
+                return True
+            else:
+                return False
+        else:
+            return False
+        
+    def isFlipped(self, _pos):
+        '''
+        Checks if the position is already flipped.
+
+        Returns:
+        true: If the symbol is already displayed.
+        false: If the symbol is not already displayed.
+        '''
+        if self.displayed_board[_pos[0]][_pos[1]] != "* ":
+            return True
+        else:
+            return False
+        
+    def getBoard(self):
+        '''
+        Gets the board.
+        '''
+        return self.board
 
 
 
