@@ -93,25 +93,33 @@ class Engine:
         _player (player): The player.
         '''
         positions = []
-        for i in range(2):
-            ok = False
-            while not ok:
-                clear()
-                print(f"Player: {_player.getName()}")
-                self.board.printDisplayedBoard()
-                try:
-                    pos1 = int(input("Row: "))
-                    pos2 = int(input("Column: "))
-                    if (pos1 >= 0 and pos1 <= len(self.board.getBoard())) and (pos2 >= 0 and pos2 <= len(self.board.getBoard()[0])):
-                        self.board.flipSymbol((pos1,pos2))
-                        positions.append((pos1,pos2))
-                        ok = True
-                    else:
-                        print("Out of limits, try again...")
+        if not _player.isThisABot():
+            for i in range(2):
+                ok = False
+                while not ok:
+                    clear()
+                    print(f"Player: {_player.getName()}")
+                    self.board.printDisplayedBoard()
+                    try:
+                        pos1 = int(input("Row: "))
+                        pos2 = int(input("Column: "))
+                        if (pos1 >= 0 and pos1 <= len(self.board.getBoard())) and (pos2 >= 0 and pos2 <= len(self.board.getBoard()[0])):
+                            self.board.flipSymbol((pos1,pos2))
+                            positions.append((pos1,pos2))
+                            ok = True
+                        else:
+                            print("Out of limits, try again...")
+                            input()
+                    except:
+                        print("Not a number")
                         input()
-                except:
-                    print("Not a number")
-                    input()
+        else:
+            botPos1 = _player.botTurn(len(self.board.getBoard()),len(self.board.getBoard()[0]))
+            botPos2 = _player.botTurn(len(self.board.getBoard()),len(self.board.getBoard()[0]))
+            self.board.flipSymbol(botPos1)
+            self.board.flipSymbol(botPos2)
+            positions = [botPos1,botPos2]
+            
         clear()
         print(f"Player: {_player.getName()}")
         self.board.printDisplayedBoard()

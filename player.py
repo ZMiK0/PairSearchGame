@@ -62,6 +62,5 @@ class Player:
 
         return (pos1,pos2)
 
-
     def isThisABot(self):
         return self.isBot
