@@ -1,14 +1,8 @@
 import random
-import os
-
-import player
-
-def clear():
-    os.system('clear')
 
 class Board:
     '''
-    This class is the engine of the game.
+    This class is the board of the game.
 
     Attributes:
     rows (int): Number of rows.
@@ -20,7 +14,7 @@ class Board:
 
     def __init__(self, _row, _cols):
         '''
-        Initializes the engine.
+        Initializes the board.
 
         Parameters:
         _row (int): Number of rows.

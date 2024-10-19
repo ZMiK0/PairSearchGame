@@ -1,3 +1,5 @@
+import random
+
 class Player:
     '''
     This is the player class.
@@ -44,8 +46,22 @@ class Player:
         '''
         return self.score
     
-    def botTurn(self):
+    def botTurn(self, _maxRow, _maxCol):
         '''
         Imitate the player action. NOT FINISHED
+
+        Parameters:
+        _maxRow (int): Max number of board rows.
+        _maxCol (int): Max number of board columns.
+
+        Returns:
+        int: Tuple of positions.
         '''
-        pass
+        pos1 = random.randint(0,_maxRow-1)
+        pos2 = random.randint(0,_maxCol-1)
+
+        return (pos1,pos2)
+
+
+    def isThisABot(self):
+        return self.isBot

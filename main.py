@@ -1,3 +1,4 @@
+import engine
 import board
 import os
 
@@ -22,6 +23,8 @@ while(not ok):
         print("Sorry, the product must be even and the board can't be bigger than 5x6 or 6x5...")
         input("PRESS ENTER")
 
-game = board.Board(rows,columns)
+game_board = board.Board(rows,columns)
 
-game.play()
+game_engine = engine.Engine(game_board,)
+
+game_engine.start()
