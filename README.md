@@ -4,25 +4,18 @@ This python game, created for a class project, involves finding pairs of matchin
 
 All the documentation and project was made by me.
 
+![Pic](./media/image.png)
 
-# Installation (Linux Only)
+
+# Installation (Linux Only) 
+[WIP NOT READY YET]
 
 
 ```shell
-git clone https://github.com/ZMiK0/PairSearchGame.git
-cd PairSearchGame
-mv main.py main
-chmod a+x main
-cd ..
-cp -r PairSearchGame ~/.local/bin/
-ln -s ~/.local/bin/PairSearchGame/main ~/.local/bin/pairSearchGame
-rm -r PairSearchGame
 ```
 
 ## Uninstall
 ```shell
-rm ~/.local/bin/quetask
-rm -r ~/.local/bin/PairSearchGame
 ```
 
 # Use
