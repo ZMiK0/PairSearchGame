@@ -22,3 +22,5 @@ All the documentation and project was made by me.
 ```shell
 $ pairSearchGame
 ```
+
+Copyright © ZMiK0 2024
