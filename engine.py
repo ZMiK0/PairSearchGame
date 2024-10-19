@@ -144,7 +144,3 @@ class Engine:
             self.board.printDisplayedBoard()
             input()
             self.board.unflipSymbols(positions[0],positions[1])
-
-        
-        
-        

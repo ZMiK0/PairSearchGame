@@ -86,14 +86,16 @@ class Board:
     def getSymbol(self):
         '''
         Pops a symbol from the symbol list.
+
+        Returns:
+        str: Symbol.
         '''
-        return self.symbols.pop(self.symbols.index(random.sample(self.symbols,1)[0])) #Esto esta un poco guarro, revisar
+        return self.symbols.pop(self.symbols.index(random.sample(self.symbols,1)[0]))
     
     def printBoard(self):
         '''
         Prints the original board.
         '''
-        self.buildBoard() #Eliminar esto cuando ya tenga el método play.
         for i in range(self.rows):
             for j in range(self.columns):
                 print(' '.join(map(str, self.board[i][j])), end = "")
@@ -103,7 +105,6 @@ class Board:
         '''
         Prints the displayed board.
         '''
-        self.buildDisplayedBoard() #Eliminar esto cuando ya tenga el método play.
         for i in range(self.rows):
             for j in range(self.columns):
                 print(' '.join(map(str, self.displayed_board[i][j])), end = "")
@@ -166,6 +167,9 @@ class Board:
     def getBoard(self):
         '''
         Gets the board.
+
+        Returns:
+        list: The board
         '''
         return self.board
 
@@ -175,6 +179,3 @@ class Board:
         int: max_points.
         '''
         return self.max_points
-
-
-
