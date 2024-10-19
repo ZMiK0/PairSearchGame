@@ -49,4 +49,3 @@ class Player:
         Imitate the player action. NOT FINISHED
         '''
         pass
-    

@@ -1,4 +1,10 @@
 import random
+import os
+
+import player
+
+def clear():
+    os.system('clear')
 
 class Board:
     '''
@@ -114,6 +120,4 @@ class Board:
     #Hacer el método play
 
 
-    
 
-    

@@ -1,7 +1,27 @@
 import board
+import os
 
-b = board.Board(4,4)
+def clear():
+    os.system('clear')
 
-b.printBoard()
-print("-------------------")
-b.printDisplayedBoard()
+clear()
+print("Welcome to PairSearchGame... Introduce the values of the board.\nWARNING: THIS WILL BE PERMANENT")
+input("PRESS ENTER")
+ok = False
+while(not ok):
+    clear()
+    try:
+        rows = int(input("Rows: "))
+        columns = int(input("Columns: "))
+    except:
+        print("--WRONG, TRY AGAIN--")
+
+    if (rows*columns)%2 == 0 and (rows*columns) <= 30 and rows > 0:
+        ok = True
+    else:
+        print("Sorry, the product must be even and the board can't be bigger than 5x6 or 6x5...")
+        input("PRESS ENTER")
+
+game = board.Board(rows,columns)
+
+game.play()
