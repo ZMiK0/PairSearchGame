@@ -3,7 +3,10 @@ import board
 import os
 
 def clear():
-    os.system('clear')
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 class Engine:
     '''

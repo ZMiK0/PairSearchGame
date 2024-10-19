@@ -3,7 +3,10 @@ import board
 import os
 
 def clear():
-    os.system('clear')
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 clear()
 print("Welcome to PairSearchGame... Introduce the values of the board.\nWARNING: THIS WILL BE PERMANENT")
