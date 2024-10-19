@@ -142,7 +142,7 @@ class Board:
         false: If is not correct.
         '''
         if _pos1 != _pos2:
-            if (self.board[_pos1[0]][_pos1[1]] == self.board[_pos2[0]][_pos2[1]]): # and not (self.isFlipped(_pos1) or self.isFlipped(_pos2)):
+            if (self.board[_pos1[0]][_pos1[1]] == self.board[_pos2[0]][_pos2[1]]):
                 return True
             else:
                 return False
