@@ -7,7 +7,7 @@ def clear():
 
 clear()
 print("Welcome to PairSearchGame... Introduce the values of the board.\nWARNING: THIS WILL BE PERMANENT")
-input("PRESS ENTER")
+input("PRESS ENTER\n")
 ok = False
 while(not ok):
     clear()

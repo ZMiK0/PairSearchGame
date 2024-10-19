@@ -47,7 +47,7 @@ class Engine:
                     ok = True
                 case "2":
                     clear()
-                    name = input("Player1 name: ")
+                    name = input("Player name: ")
                     p1 = player.Player(name, False)
                     p2 = player.Player("CPU", True)
                     ok = True
@@ -78,10 +78,15 @@ class Engine:
         self.board.buildBoard()
         self.board.buildDisplayedBoard()
         while not game_over:
-            if _player1.getScore() < 2 and _player2.getScore() < 2:
+            if _player2.getScore() < self.board.getMaxPoints():
                 self.playerTurn(_player1)
-                self.playerTurn(_player2)
+                if _player1.getScore() < self.board.getMaxPoints():
+                    self.playerTurn(_player2)
+                else:
+                    print(f"THE WINNER IS: {_player1.getName()}")
+                    game_over = True
             else:
+                print(f"THE WINNER IS: {_player2.getName()}")
                 game_over = True
         
 
@@ -98,7 +103,7 @@ class Engine:
                 ok = False
                 while not ok:
                     clear()
-                    print(f"Player: {_player.getName()}")
+                    print(f"Player: {_player.getName()}   Score: {_player.getScore()}")
                     self.board.printDisplayedBoard()
                     try:
                         pos1 = int(input("Row: "))
@@ -118,19 +123,23 @@ class Engine:
             while not ok:
                 botPos1 = _player.botTurn(len(self.board.getBoard()),len(self.board.getBoard()[0]))
                 botPos2 = _player.botTurn(len(self.board.getBoard()),len(self.board.getBoard()[0]))
-                if not self.board.isFlipped(botPos1) and not self.board.isFlipped(botPos2):
+                if (not self.board.isFlipped(botPos1) and not self.board.isFlipped(botPos2)) and (botPos1 != botPos2):
                     self.board.flipSymbol(botPos1)
                     self.board.flipSymbol(botPos2)
                     ok = True
             positions = [botPos1,botPos2]
             
         clear()
-        print(f"Player: {_player.getName()}")
-        self.board.printDisplayedBoard()
-        input()
+        
         if self.board.checkSymbols(positions[0],positions[1]):
             _player.addScore()
+            print(f"Player: {_player.getName()}   Score: {_player.getScore()}")
+            self.board.printDisplayedBoard()
+            input()
         else:
+            print(f"Player: {_player.getName()}   Score: {_player.getScore()}")
+            self.board.printDisplayedBoard()
+            input()
             self.board.unflipSymbols(positions[0],positions[1])
 
         

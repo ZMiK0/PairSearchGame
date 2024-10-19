@@ -1,4 +1,5 @@
 import random
+import math
 
 class Board:
     '''
@@ -26,7 +27,7 @@ class Board:
         self.symbols = [" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "]
         self.board = []
         self.displayed_board = []
-        self.max_points = ((self.rows*self.columns)/2) + 2 #por ver
+        self.max_points = math.trunc((((self.rows*self.columns)/2)/2))
 
     def buildBoard(self):
         '''
@@ -168,11 +169,12 @@ class Board:
         '''
         return self.board
 
-
-
-        
-    #Hacer el método de cambiar una posicion de la tabla display por su simil de la tabla board
-    #Hacer el método play
+    def getMaxPoints(self):
+        '''
+        Returns the max_points atribute.
+        int: max_points.
+        '''
+        return self.max_points
 
 
 
