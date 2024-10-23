@@ -21,6 +21,7 @@ class Player:
         self.score = 0
         self.name = _name
         self.isBot = _isBot
+        self.plays = []
 
     def addScore(self):
         '''
@@ -67,3 +68,27 @@ class Player:
         Returns the humanity of the player.
         '''
         return self.isBot
+    
+    def addPlays(self, _tuple):
+        '''
+        Adds a position tuple in plays list for a simple bot memory.
+        '''
+        self.plays.append(_tuple)
+    
+    def checkPlays(self, _plays):
+        '''
+        Cheks is said play was already made.
+
+        Returns:
+        True: If the plays list is empty.
+        False: If the play was already made.
+        True: If the play is new.
+        '''
+        if len(self.plays) != 0:
+            for i in self.plays:
+                if _plays != i:
+                    return True
+                else:
+                    return False
+        else:
+            return True

@@ -126,10 +126,14 @@ class Engine:
             while not ok:
                 botPos1 = _player.botTurn(len(self.board.getBoard()),len(self.board.getBoard()[0]))
                 botPos2 = _player.botTurn(len(self.board.getBoard()),len(self.board.getBoard()[0]))
+                while not _player.checkPlays((botPos1,botPos2)):
+                    botPos1 = _player.botTurn(len(self.board.getBoard()),len(self.board.getBoard()[0]))
+                    botPos2 = _player.botTurn(len(self.board.getBoard()),len(self.board.getBoard()[0]))
                 if (not self.board.isFlipped(botPos1) and not self.board.isFlipped(botPos2)) and (botPos1 != botPos2):
                     self.board.flipSymbol(botPos1)
                     self.board.flipSymbol(botPos2)
                     ok = True
+            _player.addPlays((botPos1,botPos2))
             positions = [botPos1,botPos2]
             
         clear()
