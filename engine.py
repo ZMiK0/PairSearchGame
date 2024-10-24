@@ -82,9 +82,9 @@ class Engine:
         self.board.buildDisplayedBoard()
         while not game_over:
             if _player2.getScore() < self.board.getMaxPoints():
-                self.playerTurn(_player1)
+                self.playerTurn(_player1, _player2)
                 if _player1.getScore() < self.board.getMaxPoints():
-                    self.playerTurn(_player2)
+                    self.playerTurn(_player2, _player1)
                 else:
                     print(f"THE WINNER IS: {_player1.getName()}")
                     game_over = True
@@ -93,12 +93,13 @@ class Engine:
                 game_over = True
         
 
-    def playerTurn(self, _player: player.Player):
+    def playerTurn(self, _player: player.Player, _otherPlayer: player.Player):
         '''
-        Manages the player's turn.
+        Manages the player's turn. If the player is not a bot, a position selection process is initiated, otherwise a random position is selected and added to both bot players memory.
 
         Parameters:
         _player (player): The player.
+        _otherPlayer (player): The enemy player.
         '''
         positions = []
         if not _player.isThisABot():
@@ -114,6 +115,7 @@ class Engine:
                         if ((pos1 >= 0 and pos1 <= len(self.board.getBoard())) and (pos2 >= 0 and pos2 <= len(self.board.getBoard()[0]))) and not self.board.isFlipped((pos1,pos2)):
                             self.board.flipSymbol((pos1,pos2))
                             positions.append((pos1,pos2))
+                            _otherPlayer.addPlays((pos1,pos2))
                             ok = True
                         else:
                             print("Out of limits or already flipped, try again...")
@@ -134,6 +136,7 @@ class Engine:
                     self.board.flipSymbol(botPos2)
                     ok = True
             _player.addPlays((botPos1,botPos2))
+            _otherPlayer.addPlays((botPos1,botPos2))
             positions = [botPos1,botPos2]
             
         clear()

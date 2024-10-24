@@ -69,7 +69,7 @@ class Player:
         '''
         return self.isBot
     
-    def addPlays(self, _tuple): #Tiene que entrarle la play del rival también xd
+    def addPlays(self, _tuple):
         '''
         Adds a position tuple in plays list for a simple bot memory.
         '''
