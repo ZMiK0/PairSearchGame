@@ -13,7 +13,8 @@ class Engine:
     This class is the engine of the game.
 
     Atributes:
-    board (board): 
+    board (board): The board
+    difficulty (int): The difficulty
     '''
     def __init__(self, _board: board.Board):
         '''
@@ -23,6 +24,7 @@ class Engine:
         _board (board): Current game board.
         '''
         self.board = _board
+        self.difficulty = 0
     
     def start(self):
         '''
@@ -32,12 +34,31 @@ class Engine:
 
     def menu(self):
         '''
-        Displays the menu.
+        Displays the menu and let the player choose the difficulty.
         '''
         ok = False
         while not ok:
             clear()
             option = input("Which gamemode would you like to play?\n1. 1v1\n2. 1vCPU\n3. CPUvCPU\n0. --EXIT--\n")
+            if option == "2" or option == "3":
+                ok2 = False
+                while not ok2:
+                    clear()
+                    difficultyInput = (input("Set the bot difficulty\n1. Easy\n2. Medium\n3. Hard\nDifficulty: "))
+                    match difficultyInput:
+                        case "1":
+                            self.difficulty = 1
+                            ok2 = True
+                        case "2":
+                            self.difficulty = 2
+                            ok2 = True
+                        case "3":
+                            self.difficulty = 3
+                            ok2 = True
+                        case (_):
+                            print("Not an option")
+                            input()
+                                                    
             match option:
                 case "0":
                     ok = True
@@ -115,7 +136,6 @@ class Engine:
                         if ((pos1 >= 0 and pos1 <= len(self.board.getBoard())) and (pos2 >= 0 and pos2 <= len(self.board.getBoard()[0]))) and not self.board.isFlipped((pos1,pos2)):
                             self.board.flipSymbol((pos1,pos2))
                             positions.append((pos1,pos2))
-                            _otherPlayer.addPlays((pos1,pos2))
                             ok = True
                         else:
                             print("Out of limits or already flipped, try again...")
@@ -123,6 +143,8 @@ class Engine:
                     except:
                         print("Not a number")
                         input()
+            if self.difficulty == 3:
+                _otherPlayer.addPlays((positions[0],positions[1]))
         else:
             ok = False
             while not ok:
@@ -135,10 +157,13 @@ class Engine:
                     self.board.flipSymbol(botPos1)
                     self.board.flipSymbol(botPos2)
                     ok = True
-            _player.addPlays((botPos1,botPos2))
-            _otherPlayer.addPlays((botPos1,botPos2))
+            if self.difficulty == 2:
+                _player.addPlays((botPos1,botPos2))
+            elif self.difficulty == 3:
+                _player.addPlays((botPos1,botPos2))
+                _otherPlayer.addPlays((botPos1,botPos2))
             positions = [botPos1,botPos2]
-            
+                       
         clear()
         
         if self.board.checkSymbols(positions[0],positions[1]):
